@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="d-flex justify-content-center">
-                    <img class="img-fluid img-responsive register-img" src="{{url('/resources/logo/register-page.svg')}}" alt="Card image cap">
+                    <img class="img-fluid img-responsive register-img" src="{{asset('resources/logo/register-page.svg')}}" alt="Card image cap">
                 </div><!--end flex-->
                 <div class="card-body">
                     <h3 class="text-center">Register</h3>

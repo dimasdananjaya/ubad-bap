@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="d-flex justify-content-center">
-                    <img class="img-fluid img-responsive login-img" src="{{url('/resources/logo/login-page.svg')}}" alt="Card image cap">
+                    <img class="img-fluid img-responsive login-img" src="{{asset('resources/logo/login-page.svg')}}" alt="Card image cap">
                 </div><!--end flex-->
 
                 <div class="card-body">

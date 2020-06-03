@@ -61,7 +61,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div class="navbar-header d-flex col">
-                    <a class="navbar-brand" href="/"><img src="{{asset('resources/logo/balidwipa.png')}}" class="navbar-logo" alt="Image"/>
+                    <a class="navbar-brand" href="{{ route('dosen.home') }}"><img src="{{asset('resources/logo/balidwipa.png')}}" class="navbar-logo" alt="Image"/>
                         BAP UBAD
                     </a>
                 </div>

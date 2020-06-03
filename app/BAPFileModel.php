@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PeriodeModel extends Model
+class BAPFileModel extends Model
 {
+    public $primaryKey='id_bap_file';
     public $timestamps=true;
-    public $primayKey='id_periode';
+
     protected $fillable=[
-        'periode',
-        'status'
+        'file',
     ];
 }

@@ -12,7 +12,7 @@
         </div><!--end row-->
 
         <div class="d-flex justify-content-center">
-          <img alt="image" class="img-responsive mt-2 index-img" src="{{url('/resources/logo/index-page.svg')}}">
+          <img alt="image" class="img-responsive mt-2 index-img" src="{{asset('resources/logo/index-page.svg')}}">
         </div><!--end flex-->
 
         <div class="row">

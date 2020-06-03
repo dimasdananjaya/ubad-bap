@@ -43,9 +43,10 @@ class PeriodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        return view('admin.admin-pilih-periode');
     }
 
     /**
@@ -80,5 +81,11 @@ class PeriodeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //this function is for admin-pilih-periode page
+    public function pilihPeriodeLaporan()
+    {
+        return view('admin.admin-pilih-periode');
     }
 }
