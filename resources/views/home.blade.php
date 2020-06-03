@@ -13,11 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="text-center">
+                        <p style="color:black;">You are logged in as {{Auth::user()->level}}<br></p>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+                        @if(Auth::user()->level == 'admin')
+                        <a href="{{route('admin.home')}}" class="btn btn-primary">Kembali Ke Halaman Admin</a>
+                        @else
+                        <a href="{{route('dosen.home')}}" class="btn btn-primary">Kembali Ke Halaman Dosen</a>
+                        @endif
+                    </div><!--flex-->
+                </div><!--card body-->
+            </div><!--card-->
+        </div><!--col-->
+    </div><!--row-->
 </div>
 @endsection

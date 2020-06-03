@@ -59,3 +59,27 @@ html, body{
 }
 
 /************ end index page **************/
+
+/************ register page ******************/
+
+#register-page .register-img{
+    width: 30em;
+    height: 20em;
+    padding-top: 1em;
+    background-color: #fff;
+    border-radius: 1em 1em 0 0;
+    padding-bottom: 1em;
+}
+
+#register-page h3{
+
+    margin-bottom: 0.5em;
+}
+
+#register-page .card{
+    width: 27em;
+    border: none;
+    border-radius: 1em;
+}
+
+/************ end register page **************/
