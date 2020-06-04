@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\PeriodeModel;
+use DB;
 
 class PeriodeController extends Controller
 {
@@ -13,7 +16,8 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        //
+        $dataPeriode=Periode::all();
+        return view('admin.admin-periode')->with('periode',$dataPeriode);
     }
 
     /**
@@ -34,7 +38,14 @@ class PeriodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Orders::create([
+            'periode'        => $request->input('periode'),
+            'status'   => $request->input('status'),
+        ]);
+
+        $order->save();
+        Alert::success('Periode Berhasil Disimpan!', 'Kembali');
+        return back();
     }
 
     /**
@@ -43,10 +54,9 @@ class PeriodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
     {
-        return view('admin.admin-pilih-periode');
+        //
     }
 
     /**
@@ -69,7 +79,25 @@ class PeriodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $simpan=Periode::find($id);
+        $simpan->periode=$request->input('periode');   
+        
+        $validator = Validator::make($request->all(), [
+            'periode' => 'required|unique:periode,periode,'.$simpan->id_periode.',id_periode'
+        ]);
+
+        if ($validator->fails()) {
+            alert()->error('Penyimpanan Gagal !', 'Periode Telah Terdaftar !');
+            return back();
+
+        }
+
+        else{
+            $simpan->save();
+            alert()->success('Data Diupdate !', '');
+            return back();
+
+        }
     }
 
     /**
@@ -80,7 +108,9 @@ class PeriodeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('periode')->where('id_periode', '=', $id)->delete();
+        alert()->success('Data Terhapus !', '');
+        return back();
     }
 
     //this function is for admin-pilih-periode page
