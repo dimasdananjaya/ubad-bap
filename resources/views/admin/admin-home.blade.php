@@ -18,7 +18,7 @@
                     <img class="img-fluid" src="{{asset('resources/logo/admin-home-periode.svg')}}">
                     <h4>Setting Periode</h4>
                     <p>Kelola Periode Pelaporan</p>
-                    <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('pilih.periode.laporan')}}">Pilih</a></p>
+                    <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('periode.index')}}">Pilih</a></p>
                 </div><!--col-->
             </div><!--row-->
         </div><!--card-->

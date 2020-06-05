@@ -58,6 +58,7 @@
 </head>
 
 <body>
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div class="navbar-header d-flex col">
@@ -114,11 +115,9 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="fdb-block footer-large">
-
-        </footer>
    
-
+    @include('sweetalert::alert')
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <!-- Optional JavaScript -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

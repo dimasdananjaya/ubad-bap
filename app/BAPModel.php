@@ -8,6 +8,8 @@ class BAPModel extends Model
 {
     public $primaryKey='id_bap';
     public $timestamps=true;
+
+    protected $table='bap';
     protected $fillable=[
         'id_user',
         'tanggal',

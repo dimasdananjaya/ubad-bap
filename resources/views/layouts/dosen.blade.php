@@ -58,6 +58,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div class="navbar-header d-flex col">

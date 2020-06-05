@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use Auth;
 use App\PeriodeModel;
 use DB;
+use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PeriodeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +22,16 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        $dataPeriode=Periode::all();
-        return view('admin.admin-periode')->with('periode',$dataPeriode);
+        $role=Auth::user()->level;
+        
+        if($role == 'admin')
+        {
+            $dataPeriode=PeriodeModel::all();
+            return view('admin.admin-kelola-periode')->with('dataPeriode',$dataPeriode);
+        }
+        else{
+            return view('home');
+        }
     }
 
     /**
@@ -38,14 +52,25 @@ class PeriodeController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Orders::create([
-            'periode'        => $request->input('periode'),
-            'status'   => $request->input('status'),
+        $validator = Validator::make($request->all(), [
+            'periode' => 'required|unique:periode|max:255',
+            'status'=> 'required',
         ]);
 
-        $order->save();
-        Alert::success('Periode Berhasil Disimpan!', 'Kembali');
-        return back();
+        if ($validator->fails()) {
+            Alert::error('Periode Gagal Disimpan!', 'Periode Telah Terdaftar');
+            return back();
+        }
+        else{
+            $periode = PeriodeModel::create([
+                'periode' => $request->input('periode'),
+                'status' => 'aktif',
+            ]);
+
+            $periode->save();
+            Alert::success('Periode Berhasil Disimpan!');
+            return back()->with('success', 'Login Successfully!');
+        }
     }
 
     /**
@@ -79,24 +104,28 @@ class PeriodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $simpan=Periode::find($id);
-        $simpan->periode=$request->input('periode');   
+        $simpan=PeriodeModel::find($id);
+        $simpan->periode=$request->input('periode');
+        $simpan->status=$request->input('status');   
         
         $validator = Validator::make($request->all(), [
             'periode' => 'required|unique:periode,periode,'.$simpan->id_periode.',id_periode'
         ]);
 
         if ($validator->fails()) {
-            alert()->error('Penyimpanan Gagal !', 'Periode Telah Terdaftar !');
+            Alert::error('Periode Gagal Disimpan!', 'Kembali');
             return back();
-
         }
 
         else{
+            DB::select(DB::raw(" 
+            UPDATE periode
+            SET status='non-aktif'
+            WHERE id_periode != $simpan->id_periode "
+            ));
             $simpan->save();
-            alert()->success('Data Diupdate !', '');
+            Alert::success('Periode Berhasil Disimpan!', 'Kembali');
             return back();
-
         }
     }
 
@@ -116,6 +145,7 @@ class PeriodeController extends Controller
     //this function is for admin-pilih-periode page
     public function pilihPeriodeLaporan()
     {
-        return view('admin.admin-pilih-periode');
+        $dataPeriode=PeriodeModel::all();
+        return view('admin.admin-pilih-periode')->with('dataPeriode',$dataPeriode);
     }
 }

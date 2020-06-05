@@ -129,3 +129,31 @@ html, body{
     border-radius: 2em;
 }
 /************ end admin pilih periode page ******************/
+
+/************ admin kelola periode page ******************/
+#admin-kelola-periode .card{
+    padding: 2em 2em 2em 2em;
+    min-height: 40em;
+}
+
+#admin-kelola-periode img{
+    width: 20em;
+    height: 15em;
+    margin-bottom: 2em;
+}
+
+#admin-kelola-periode p{
+    color: black;
+}
+
+#admin-kelola-periode .btn{
+    max-width: 10em;
+    border: none;
+    border-radius: 0.6em;
+}
+
+#admin-kelola-periode thead{
+    background-color: #0E6BA8;
+    color: #fff;
+}
+/************ end admin kelola periode page ******************/

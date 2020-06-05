@@ -23,10 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/admin-home', 'RedirectLoginController@isAdmin')->middleware('auth')->name('admin.home');
+    Route::resource('periode','PeriodeController');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::get('/dosen-home', 'RedirectLoginController@isDosen')->middleware('auth')->name('dosen.home');
     Route::get('/pilih-periode-laporan', 'PeriodeController@pilihPeriodeLaporan')->middleware('auth')->name('pilih.periode.laporan');
+
 
 });

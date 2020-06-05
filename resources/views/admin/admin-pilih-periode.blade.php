@@ -9,16 +9,22 @@
             <table class="table table-sm table-hover table-striped" id="tabel-periode">
                 <thead>
                     <th>Periode</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
+                    @foreach ($dataPeriode as $dtprd)
                     <tr>
-                        <td>Januari 2020</td>
-                        <td><a class="btn btn-success" href="#">Pilih</a></td>
+                        <td>{{$dtprd->periode}}</td>
+                        <td>{{$dtprd->status}}</td>
+                        <td>
+                            <a class="btn btn-success" style="color:#fff;float:left; margin-right:20px;">Show</a>
+                        </td>          
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
-        </div>
+        </div><!--card-->
     </div><!--container-->
 </section>
 @endsection
