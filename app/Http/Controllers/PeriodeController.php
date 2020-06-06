@@ -143,9 +143,16 @@ class PeriodeController extends Controller
     }
 
     //this function is for admin-pilih-periode page
-    public function pilihPeriodeLaporan()
+    public function adminPilihPeriodeLaporan()
     {
         $dataPeriode=PeriodeModel::all();
         return view('admin.admin-pilih-periode')->with('dataPeriode',$dataPeriode);
+    }
+
+    //this function is for dosen-pilih-periode page
+    public function dosenPilihPeriodeLaporan()
+    {
+        $dataPeriode=PeriodeModel::all();
+        return view('dosen.dosen-pilih-periode')->with('dataPeriode',$dataPeriode);
     }
 }

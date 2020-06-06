@@ -113,12 +113,6 @@ html, body{
     min-height: 40em;
 }
 
-#admin-pilih-periode img{
-    width: 20em;
-    height: 15em;
-    margin-bottom: 2em;
-}
-
 #admin-pilih-periode p{
     color: black;
 }
@@ -136,12 +130,6 @@ html, body{
     min-height: 40em;
 }
 
-#admin-kelola-periode img{
-    width: 20em;
-    height: 15em;
-    margin-bottom: 2em;
-}
-
 #admin-kelola-periode p{
     color: black;
 }
@@ -157,3 +145,62 @@ html, body{
     color: #fff;
 }
 /************ end admin kelola periode page ******************/
+
+/************ dosen home page ******************/
+#dosen-home .card{
+    padding: 2em 2em 2em 2em;
+    min-height: 40em;
+}
+
+#dosen-home p{
+    color: black;
+}
+
+#dosen-home img{
+    width: 20em;
+    height: 15em;
+    margin-bottom: 2em;
+}
+
+#dosen-home .btn{
+    width: 10em;
+    border: none;
+    border-radius: 0.6em;
+}
+
+/************ end dosen home page ******************/
+
+/************ dosen pilih periode page ******************/
+#dosen-pilih-periode .card{
+    padding: 2em 2em 2em 2em;
+    min-height: 40em;
+}
+
+#dosen-pilih-periode p{
+    color: black;
+}
+
+#dosen-pilih-periode .btn{
+    width: 5em;
+    border: none;
+    border-radius: 2em;
+}
+/************ end dosen pilih periode page ******************/
+
+
+
+/************ dosen-show-bap-periode page ******************/
+#dosen-show-bap-periode .card{
+    padding: 2em 2em 2em 2em;
+    min-height: 40em;
+}
+
+#dosen-show-bap-periode p{
+    color: black;
+}
+
+#dosen-show-bap-periode .btn{
+    border: none;
+    border-radius: 2em;
+}
+/************ end dosen pilih periode page ******************/

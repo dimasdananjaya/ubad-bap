@@ -12,9 +12,11 @@ class BAPModel extends Model
     protected $table='bap';
     protected $fillable=[
         'id_user',
+        'id_periode',
         'tanggal',
         'mata_kuliah',
         'sks',
-        'waktu'
+        'jam',
+        'materi',
     ];
 }
