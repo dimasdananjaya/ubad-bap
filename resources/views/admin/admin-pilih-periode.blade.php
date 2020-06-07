@@ -18,7 +18,10 @@
                         <td>{{$dtprd->periode}}</td>
                         <td>{{$dtprd->status}}</td>
                         <td>
-                            <a class="btn btn-success" style="color:#fff;float:left; margin-right:20px;">Show</a>
+                            {!!Form::open(['action'=>['BAPLaporanController@showBAPPeriodeAdmin', $dtprd->id_periode], 'method'=>'GET'])!!}
+                                {{Form::hidden('id_periode',"$dtprd->id_periode")}}
+                                {{Form::submit('Pilih',['class'=>'btn btn-success btn-block'])}}
+                            {!!Form::close()!!}
                         </td>          
                     </tr>
                     @endforeach

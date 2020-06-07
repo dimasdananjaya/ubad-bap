@@ -11,7 +11,7 @@
                     <img class="img-fluid" src="{{asset('resources/logo/admin-home-bap.svg')}}">
                     <h4>Laporan BAP</h4>
                     <p>Lihat Seluruh Laporan BAP Dosen</p>
-                    <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('pilih.periode.laporan')}}">Pilih</a></p>
+                    <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('admin.pilih.periode.laporan')}}">Pilih</a></p>
                 </div><!--col-->
 
                 <div class="col-12 ml-auto col-md-6 col-lg-5">

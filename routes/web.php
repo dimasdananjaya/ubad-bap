@@ -24,13 +24,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/admin-home', 'RedirectLoginController@isAdmin')->middleware('auth')->name('admin.home');
     Route::get('/pilih-periode-laporan', 'PeriodeController@adminPilihPeriodeLaporan')->middleware('auth')->name('admin.pilih.periode.laporan');
+    Route::get('/admin-show-laporan-periode', 'BAPLaporanController@showBAPPeriodeAdmin')->middleware('auth')->name('admin.show.laporan.periode');
     Route::resource('periode','PeriodeController');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::get('/dosen-home', 'RedirectLoginController@isDosen')->middleware('auth')->name('dosen.home');
     Route::get('/pilih-periode-laporan', 'PeriodeController@dosenPilihPeriodeLaporan')->middleware('auth')->name('dosen.pilih.periode.laporan');
-    Route::get('/kelola-laporan-periode', 'BAPLaporanController@kelolaLaporanPeriodeDosen')->middleware('auth');
+    Route::get('/dosen-kelola-laporan-periode', 'BAPLaporanController@kelolaLaporanPeriodeDosen')->middleware('auth');
     Route::post('/store-laporan-periode', 'BAPLaporanController@storeLaporanBap')->middleware('auth');
     Route::put('/update-laporan-periode/{id}', 'BAPLaporanController@updateLaporanBap')->middleware('auth');
 });

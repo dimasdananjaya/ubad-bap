@@ -90,4 +90,15 @@ class BAPLaporanController extends Controller
             return back();
         }
     }
+
+    public function showBAPPeriodeAdmin(Request $request){
+        $id_periode=$request->input('id_periode');
+        $periode = PeriodeModel::where('id_periode', $id_periode)->first();
+        $dataLaporanBAPUser=DB::select(DB::raw("SELECT users.name, sum( bap.sks ) AS total_sks FROM bap LEFT JOIN users ON 
+        users.id_user=bap.id_user WHERE id_periode=$id_periode GROUP BY bap.id_user"));
+
+        return view('admin.admin-show-laporan-bap-periode')
+        ->with('dataLaporanBAPUser',$dataLaporanBAPUser)
+        ->with('periode',$periode);
+    }
 }
