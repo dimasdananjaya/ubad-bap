@@ -152,7 +152,7 @@ class PeriodeController extends Controller
     //this function is for dosen-pilih-periode page
     public function dosenPilihPeriodeLaporan()
     {
-        $dataPeriode=PeriodeModel::all();
+        $dataPeriode=PeriodeModel::all()->where('status','aktif');
         return view('dosen.dosen-pilih-periode')->with('dataPeriode',$dataPeriode);
     }
 }

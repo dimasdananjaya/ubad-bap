@@ -27,6 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <a class="btn btn-primary mb-5 mb-md-0" href="{{route('dosen.home')}}">Kembali ke Home</a>
         </div><!--card-->
     </div><!--container-->
 </section>

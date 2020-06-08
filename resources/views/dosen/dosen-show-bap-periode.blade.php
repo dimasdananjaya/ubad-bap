@@ -52,6 +52,7 @@
                     <th>Jam</th>
                     <th>SKS</th>
                     <th>Materi</th>
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                     @foreach ($dataLaporanBAPPeriode as $dlbp)
@@ -64,7 +65,7 @@
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#periode-edit-modal{{$dlbp->id_bap}}">Edit</a>
                         </td>          
-                        <!-- Modal Edit Periode-->
+                        <!-- Modal Edit BAP-->
                         <div class="modal fade" id="periode-edit-modal{{$dlbp->id_bap}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -101,6 +102,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <a class="btn btn-primary mb-5 mb-md-0" style="width: 10em;" href="{{route('dosen.home')}}">Kembali ke Home</a>
         </div><!--card-->
     </div><!--container-->
 </section>

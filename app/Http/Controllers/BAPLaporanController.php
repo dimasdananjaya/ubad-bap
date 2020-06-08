@@ -9,6 +9,7 @@ use App\BapModel;
 use DB;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\User;
 
 
 class BAPLaporanController extends Controller
@@ -94,11 +95,31 @@ class BAPLaporanController extends Controller
     public function showBAPPeriodeAdmin(Request $request){
         $id_periode=$request->input('id_periode');
         $periode = PeriodeModel::where('id_periode', $id_periode)->first();
-        $dataLaporanBAPUser=DB::select(DB::raw("SELECT users.name, sum( bap.sks ) AS total_sks FROM bap LEFT JOIN users ON 
+        $dataLaporanBAPUser=DB::select(DB::raw("SELECT users.*, sum( bap.sks ) AS total_sks FROM bap LEFT JOIN users ON 
         users.id_user=bap.id_user WHERE id_periode=$id_periode GROUP BY bap.id_user"));
 
         return view('admin.admin-show-laporan-bap-periode')
         ->with('dataLaporanBAPUser',$dataLaporanBAPUser)
         ->with('periode',$periode);
+    }
+
+    public function detailLaporanBAP(Request $request){
+        $id_periode=$request->input('id_periode');
+        $periode = PeriodeModel::where('id_periode', $id_periode)->first();
+        $id_user=$request->input('id_user');
+        $name = User::where('id_user', $id_user)->first();
+
+        //$dataLaporanBAPPeriode=DB::select(DB::raw(" SELECT*FROM bap where id_periode=$id_periode AND id_user=$id_user"));
+
+        $dataDetailLaporanBAP= DB::table('bap')
+        ->join('users', 'users.id_user', '=', 'bap.id_user')
+        ->select('bap.*', 'users.name')
+        ->where('id_periode',$id_periode)
+        ->get();
+        
+        return view('admin.admin-detail-laporan-bap')
+        ->with('dataLaporanBAPPeriode',$dataDetailLaporanBAP)
+        ->with('periode',$periode)
+        ->with('name',$name);
     }
 }
