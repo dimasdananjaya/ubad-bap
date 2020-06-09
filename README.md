@@ -7,9 +7,11 @@
 
 A Lecturer Reporting System for Universitas Bali Dwipa
 
-<p>visit website : www.balidwipa.ac.id</p>
+Visit Universitas Bali Dwipa
 <p>instagram     : @universitasbalidwipa</p>
 <p>facebook      : universitasbalidwipa</p>
+<p>Website (old)      : www.balidwipa.ac.id</p>
+<p>Website (new)      : http://ubadtest.ubadpayment.net/</p>
 
 
 ## License
