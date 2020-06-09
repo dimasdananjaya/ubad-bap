@@ -1,8 +1,11 @@
 <p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/readmepic/pic1.png?raw=true)"></p>
+<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/readmepic/pic2.png?raw=true)"></p>
+<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/readmepic/pic3.png?raw=true)"></p>
+<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/readmepic/pic4.png?raw=true)"></p>
 
 ## About This Repositories
 
-A Website For Universitas Bali Dwipa
+A Lecturer Reporting System for Universitas Bali Dwipa
 
 <p>>visit website : www.balidwipa.ac.id</p>
 <p>instagram     : @universitasbalidwipa</p>
