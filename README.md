@@ -7,7 +7,7 @@
 
 A Lecturer Reporting System for Universitas Bali Dwipa
 
-<p>>visit website : www.balidwipa.ac.id</p>
+<p>visit website : www.balidwipa.ac.id</p>
 <p>instagram     : @universitasbalidwipa</p>
 <p>facebook      : universitasbalidwipa</p>
 
