@@ -1,14 +1,14 @@
-![alt text](https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/logo/balidwipa.png?raw=true)
+<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/logo/balidwipa.png?raw=true)"></p>
 
 ## About This Repositories
 
 A Website For Universitas Bali Dwipa
 
-visit website : www.balidwipa.ac.id
-instagram     : @universitasbalidwipa
-facebook      : universitasbalidwipa
+<p>>visit website : www.balidwipa.ac.id</p>
+<p>instagram     : @universitasbalidwipa</p>
+<p>facebook      : universitasbalidwipa</p>
 
 
 ## License
-this repository created by : Anak Agung Gede Dimas Dananjaya
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p>this repository created by : Anak Agung Gede Dimas Dananjaya</p>
+<p>The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).</p>
