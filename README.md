@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/logo/balidwipa.png?raw=true)"></p>
+<p align="center"><img src="https://github.com/dimasdananjaya/ubad-bap/blob/master/public/resources/readmepic/pic1.png?raw=true)"></p>
 
 ## About This Repositories
 
