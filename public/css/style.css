@@ -9,6 +9,11 @@ html, body{
     height: 2em;
 }
 
+thead{
+    background-color: #0E6BA8;
+    color: #fff;
+}
+
 /************ index page ******************/
 
 #index-page .btn-round{
