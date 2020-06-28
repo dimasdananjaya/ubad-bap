@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <h2 class="text-center">Data BAP Periode : {{$periode->periode}}</h2>
-
+            <img class="mx-auto d-block" src="{{asset('resources/logo/admin-home-bap.svg')}}">
             <hr>
             <table class="table table-lg table-hover table-striped table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
@@ -36,4 +36,9 @@
         </div><!--card-->
     </div><!--container-->
 </section>
+<script>
+    $(document).ready(function() {
+        $('#tabel-laporan-bap').DataTable();
+    } );
+</script>
 @endsection

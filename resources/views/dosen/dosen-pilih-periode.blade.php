@@ -31,4 +31,9 @@
         </div><!--card-->
     </div><!--container-->
 </section>
+<script>
+    $(document).ready(function() {
+        $('#tabel-periode').DataTable();
+    } );
+</script>
 @endsection

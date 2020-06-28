@@ -4,12 +4,8 @@
 <section id="admin-kelola-periode">
     <div class="container">
         <div class="card">
-            <h2 class="text-center">Kelola Periode</h2>
-            <hr>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPeriodeModal">
-                Tambah Periode
-            </button>
+            <h2 class="text-center">Halaman Setting Periode</h2>
+            <img class="mx-auto d-block" src="{{asset('resources/logo/admin-home-bap.svg')}}">
             
             <!-- Modal -->
             <div class="modal fade" id="tambahPeriodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,7 +31,13 @@
                     </div><!--modal content-->
                 </div><!--modal dialog-->
             </div><!--modal-->
+
+            <h3>Data Periode</h3>
             <hr>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#tambahPeriodeModal">
+                Tambah Periode
+            </button>
             <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-periode">
                 <thead>
                     <th>Periode</th>
@@ -87,5 +89,10 @@
         </div><!--card-->
     </div><!--container-->
 </section>
+<script>
+    $(document).ready(function() {
+        $('#tabel-periode').DataTable();
+    } );
+</script>
 @endsection
 

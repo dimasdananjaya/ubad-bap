@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/pilih-periode-laporan', 'PeriodeController@adminPilihPeriodeLaporan')->middleware('auth')->name('admin.pilih.periode.laporan');
     Route::get('/admin-show-laporan-periode', 'BAPLaporanController@showBAPPeriodeAdmin')->middleware('auth')->name('admin.show.laporan.periode');
     Route::get('/detail-laporan-bap/{id}', 'BAPLaporanController@detailLaporanBAP')->middleware('auth')->name('admin.detail.laporan.bap');
+    Route::get('/kelola-users', 'UsersController@kelolaUser')->middleware('auth')->name('admin.users');
     Route::resource('periode','PeriodeController');
 });
 

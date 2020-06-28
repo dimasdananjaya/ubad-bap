@@ -1,6 +1,6 @@
 html, body{
     background-color: #0a97b0 !important;
-    
+    font-family: 'Open Sans', sans-serif !important; 
 }
 
 
@@ -12,7 +12,9 @@ html, body{
 thead{
     background-color: #0E6BA8;
     color: #fff;
+    border-top-left-radius: 1em;
 }
+
 
 /************ index page ******************/
 
@@ -156,6 +158,11 @@ thead{
     background-color: #0E6BA8;
     color: #fff;
 }
+
+#admin-kelola-periode img{
+    width: 18em;
+    height: 20em;
+}
 /************ end admin kelola periode page ******************/
 
 
@@ -172,6 +179,11 @@ thead{
 #admin-show-laporan-bap-periode .btn{
     border: none;
     border-radius: 2em;
+}
+
+#admin-show-laporan-bap-periode img{
+    width: 18em;
+    height: 20em;
 }
 /************ end admin-show-laporan-bap-periode page ******************/
 
@@ -258,3 +270,32 @@ thead{
     border-radius: 2em;
 }
 /************ end dosen pilih periode page ******************/
+
+/************ register page ******************/
+#register-page .background{
+    padding: 2em 2em 2em 2em;
+    background-color: #fff;
+    margin: 1em 1.5em 1.5em 1.5em ;
+    border-radius: 0.5em;
+}
+
+#register-page p{
+    color: black;
+}
+
+#register-page .btn{
+    border: none;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+#register-page .btn-modal{
+    border: none;
+    width: 10em;
+}
+
+#register-page img{
+    width: 18em;
+    height: 20em;
+}
+/************ register page ******************/

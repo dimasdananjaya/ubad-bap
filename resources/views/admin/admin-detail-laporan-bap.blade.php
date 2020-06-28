@@ -7,7 +7,7 @@
             <p><b>Detail Laporan : {{$name->name}}</b></p>
             <p><b>BAP Periode : {{$periode->periode}}</b></p>
 
-            <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
+            <table class="table table-sm table-hover table-striped table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
                     <th>No.</th>
                     <th>Tanggal</th>
@@ -37,4 +37,9 @@
         </div><!--card-->
     </div><!--container-->
 </section>    
+<script>
+    $(document).ready(function() {
+        $('#tabel-laporan-bap').DataTable();
+    } );
+</script>
 @endsection

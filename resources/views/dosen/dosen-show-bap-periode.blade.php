@@ -106,4 +106,9 @@
         </div><!--card-->
     </div><!--container-->
 </section>
+<script>
+    $(document).ready(function() {
+        $('#tabel-laporan-bap').DataTable();
+    } );
+</script>
 @endsection
