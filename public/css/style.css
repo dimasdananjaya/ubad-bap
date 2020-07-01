@@ -251,14 +251,22 @@ thead{
     border: none;
     border-radius: 2em;
 }
+
+#dosen-pilih-periode img{
+    width: 18em;
+    height: 20em;
+
+}
 /************ end dosen pilih periode page ******************/
 
 
 
 /************ dosen-show-bap-periode page ******************/
-#dosen-show-bap-periode .card{
+#dosen-show-bap-periode .background{
     padding: 2em 2em 2em 2em;
     min-height: 40em;
+    background-color: #fff;
+    border-radius: 1em;
 }
 
 #dosen-show-bap-periode p{
@@ -267,7 +275,12 @@ thead{
 
 #dosen-show-bap-periode .btn{
     border: none;
-    border-radius: 2em;
+    border-radius: 0.7em;
+}
+
+#dosen-show-bap-periode img{
+    width: 18em;
+    height: 20em;
 }
 /************ end dosen pilih periode page ******************/
 

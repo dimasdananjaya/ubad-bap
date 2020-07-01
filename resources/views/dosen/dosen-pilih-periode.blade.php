@@ -4,7 +4,8 @@
 <section id="dosen-pilih-periode">
     <div class="container">
         <div class="card">
-            <h2 class="text-center">Pilih Periode</h2>
+            <h2 class="text-center"><b>Pilih Periode</b></h2>
+            <img class="img-fluid d-block mx-auto" src="{{asset('resources/logo/dosen-pilih-periode.svg')}}">
             <hr>
             <table class="table table-sm table-hover table-striped" id="tabel-periode">
                 <thead>
@@ -27,7 +28,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a class="btn btn-primary mb-5 mb-md-0" href="{{route('dosen.home')}}">Kembali ke Home</a>
+            <a class="btn btn-primary mb-5 mb-md-0 mt-4" href="{{route('dosen.home')}}">Kembali ke Home</a>
         </div><!--card-->
     </div><!--container-->
 </section>

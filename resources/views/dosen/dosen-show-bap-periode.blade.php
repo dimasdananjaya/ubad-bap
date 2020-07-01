@@ -2,12 +2,13 @@
 
 @section('content')
 <section id="dosen-show-bap-periode">
-    <div class="container">
-        <div class="card">
-            <h2 class="text-center">Kelola Data BAP Periode : {{$periode->periode}}</h2>
+    <div class="container-fluid">
+        <div class="background">
+            <h2 class="text-center"><b>Kelola Data BAP Periode : {{$periode->periode}}</b></h2>
+            <img class="img-fluid d-block mx-auto" src="{{asset('resources/logo/laporan-bap-dosen.svg')}}">
             <hr>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahLaporanBapModal">
+            <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
                 Tambah Laporan BAP
             </button>
             
@@ -44,7 +45,7 @@
                     </div><!--modal content-->
                 </div><!--modal dialog-->
             </div><!--modal-->
-            <hr>
+
             <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
                     <th>Tanggal</th>
@@ -102,7 +103,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a class="btn btn-primary mb-5 mb-md-0" style="width: 10em;" href="{{route('dosen.home')}}">Kembali ke Home</a>
+            <a class="btn btn-primary mb-5 mb-md-0 mt-2" style="width: 10em;" href="{{route('dosen.home')}}">Kembali ke Home</a>
         </div><!--card-->
     </div><!--container-->
 </section>

@@ -32,7 +32,7 @@
             </table>
             {!!Form::open(['action'=>['BAPLaporanController@showBAPPeriodeAdmin', $dlbp->id_periode], 'method'=>'GET'])!!}
                 {{Form::hidden('id_periode',"$dlbp->id_periode")}}
-                {{Form::submit('Kembali Ke Laporan Periode',['class'=>'btn btn-primary'])}}
+                {{Form::submit('Kembali Ke Laporan Periode',['class'=>'btn btn-primary mt-4'])}}
             {!!Form::close()!!}
         </div><!--card-->
     </div><!--container-->

@@ -25,14 +25,14 @@
                             {!!Form::open(['action'=>['BAPLaporanController@detailLaporanBAP', $dlbu->id_user], 'method'=>'GET'])!!}
                                 {{Form::hidden('id_periode',"$periode->id_periode")}}
                                 {{Form::hidden('id_user',"$dlbu->id_user")}}
-                                {{Form::submit('Pilih',['class'=>'btn btn-success btn-block'])}}
+                                {{Form::submit('Detail',['class'=>'btn btn-success btn-block'])}}
                             {!!Form::close()!!}
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('admin.pilih.periode.laporan')}}">Kembali ke Pilih Periode</a></p>
+            <p><a class="btn btn-primary mb-5 mb-md-0 mt-4" href="{{route('admin.pilih.periode.laporan')}}">Kembali ke Pilih Periode</a></p>
         </div><!--card-->
     </div><!--container-->
 </section>
