@@ -4,8 +4,7 @@
 <section id="admin-detail-laporan-bap">
     <div class="container">
         <div class="card">
-            <p><b>Detail Laporan : {{$name->name}}</b></p>
-            <p><b>BAP Periode : {{$periode->periode}}</b></p>
+            <p class="card-text"><b>Detail Laporan : {{$name->name}} <br> BAP Periode : {{$periode->periode}}</b></p>
 
             <table class="table table-sm table-hover table-striped table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
@@ -39,7 +38,19 @@
 </section>    
 <script>
     $(document).ready(function() {
-        $('#tabel-laporan-bap').DataTable();
+        var table = $('#tabel-laporan-bap').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+        } );
+    
+        table.buttons().container()
+            .appendTo( '#tabel-laporan-bap_wrapper .col-md-6:eq(0)' );
+
+        table.on( 'order.dt search.dt', function () {
+            table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     } );
 </script>
 @endsection

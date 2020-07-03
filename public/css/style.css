@@ -178,7 +178,6 @@ thead{
 
 #admin-show-laporan-bap-periode .btn{
     border: none;
-    border-radius: 2em;
 }
 
 #admin-show-laporan-bap-periode img{
@@ -199,7 +198,6 @@ thead{
 
 #admin-detail-laporan-bap .btn{
     border: none;
-    border-radius: 2em;
 }
 /************ end admin-detail-laporan-bap page ******************/
 
@@ -275,7 +273,6 @@ thead{
 
 #dosen-show-bap-periode .btn{
     border: none;
-    border-radius: 0.7em;
 }
 
 #dosen-show-bap-periode img{

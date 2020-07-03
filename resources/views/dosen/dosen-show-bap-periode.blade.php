@@ -48,6 +48,7 @@
 
             <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
+                    <th>No.</th>
                     <th>Tanggal</th>
                     <th>Mata Kuliah</th>
                     <th>Jam</th>
@@ -58,6 +59,7 @@
                 <tbody>
                     @foreach ($dataLaporanBAPPeriode as $dlbp)
                     <tr>
+                        <td></td>
                         <td>{{$dlbp->tanggal}}</td>
                         <td>{{$dlbp->mata_kuliah}}</td>
                         <td>{{$dlbp->jam}}</td>
@@ -109,7 +111,19 @@
 </section>
 <script>
     $(document).ready(function() {
-        $('#tabel-laporan-bap').DataTable();
+        var table = $('#tabel-laporan-bap').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+        } );
+    
+        table.buttons().container()
+            .appendTo( '#tabel-laporan-bap_wrapper .col-md-6:eq(0)' );
+
+        table.on( 'order.dt search.dt', function () {
+            table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     } );
 </script>
 @endsection

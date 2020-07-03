@@ -38,7 +38,19 @@
 </section>
 <script>
     $(document).ready(function() {
-        $('#tabel-laporan-bap').DataTable();
+        var table = $('#tabel-laporan-bap').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+        } );
+    
+        table.buttons().container()
+            .appendTo( '#tabel-laporan-bap_wrapper .col-md-6:eq(0)' );
+
+        table.on( 'order.dt search.dt', function () {
+            table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     } );
 </script>
 @endsection
