@@ -7,6 +7,9 @@
             <h2 class="text-center"><b>Kelola Data BAP Periode : {{$periode->periode}}</b></h2>
             <img class="img-fluid d-block mx-auto" src="{{asset('resources/logo/laporan-bap-dosen.svg')}}">
             <hr>
+
+            <h4><b>Total SKS : @foreach ($totalSKS as $tsks) {{$tsks->totalSKS}}@endforeach</b></h4>
+
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
                 Tambah Laporan BAP
@@ -54,7 +57,8 @@
                     <th>Jam</th>
                     <th>SKS</th>
                     <th>Materi</th>
-                    <th>Aksi</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                     @foreach ($dataLaporanBAPPeriode as $dlbp)
@@ -67,6 +71,12 @@
                         <td>{{$dlbp->materi}}</td>
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#periode-edit-modal{{$dlbp->id_bap}}">Edit</a>
+                        </td>
+                        <td>
+                            {!!Form::open(['action'=>['BAPLaporanController@deleteLaporanBap', $dlbp->id_bap], 'method'=>'POST','id'=>'form-delete-bap'.$dlbp->id_bap])!!}
+                                {{ Form::hidden('id_bap',$dlbp->id_bap) }}
+                                {{Form::submit('Hapus',['class'=>'btn btn-danger'])}}
+                            {!!Form::close()!!}
                         </td>          
                         <!-- Modal Edit BAP-->
                         <div class="modal fade" id="periode-edit-modal{{$dlbp->id_bap}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

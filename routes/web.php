@@ -36,4 +36,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::get('/dosen-kelola-laporan-periode', 'BAPLaporanController@kelolaLaporanPeriodeDosen')->middleware('auth');
     Route::post('/store-laporan-periode', 'BAPLaporanController@storeLaporanBap')->middleware('auth');
     Route::put('/update-laporan-periode/{id}', 'BAPLaporanController@updateLaporanBap')->middleware('auth');
+    Route::post('/delete-laporan-periode/{id}', 'BAPLaporanController@deleteLaporanBap')->middleware('auth');
 });

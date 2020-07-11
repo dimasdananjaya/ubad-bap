@@ -19,11 +19,13 @@ class BAPLaporanController extends Controller
         $periode = PeriodeModel::where('id_periode', $id_periode)->first();
         $id_user=Auth::user()->id_user;
 
-        $dataLaporanBAPPeriode=DB::select(DB::raw(" SELECT*FROM bap where id_periode=$id_periode AND id_user=$id_user"));
+        $dataLaporanBAPPeriode=DB::select(DB::raw("SELECT*FROM bap where id_periode=$id_periode AND id_user=$id_user"));
+        $totalSKS=DB::select(DB::raw("SELECT SUM(sks) AS totalSKS FROM bap where id_user=$id_user AND id_periode=$id_periode"));
 
         return view('dosen.dosen-show-bap-periode')
         ->with('dataLaporanBAPPeriode',$dataLaporanBAPPeriode)
-        ->with('periode',$periode);
+        ->with('periode',$periode)
+        ->with('totalSKS',$totalSKS);
     }
 
     public function storeLaporanBap(Request $request){
@@ -90,6 +92,14 @@ class BAPLaporanController extends Controller
             Alert::success('Data BAP Berhasil Disimpan!');
             return back();
         }
+    }
+
+    public function deleteLaporanBap(Request $request )
+    {
+        $id = $request->input('id_bap');
+        BAPModel::find($id)->delete();
+        alert()->success('Berhasil Dihapus!', '');
+        return back();
     }
 
     public function showBAPPeriodeAdmin(Request $request){
