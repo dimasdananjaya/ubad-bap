@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\PeriodeModel;
-use App\BapModel;
+use App\BAPModel;
 use DB;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;

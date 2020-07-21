@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('level');
+            $table->string('pwd');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -36,7 +38,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_periode');
             $table->string('mata_kuliah');
-            $table->number('sks');
+            $table->integer('sks');
             $table->date('tanggal');
             $table->time('jam');
             $table->string('materi');
