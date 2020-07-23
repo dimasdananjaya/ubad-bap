@@ -18,5 +18,7 @@ class BAPModel extends Model
         'sks',
         'jam',
         'materi',
+        'jumlah_mahasiswa',
+        'file',
     ];
 }

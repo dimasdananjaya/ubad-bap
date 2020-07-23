@@ -3,6 +3,9 @@ html, body{
     font-family: 'Open Sans', sans-serif !important; 
 }
 
+table{
+    overflow-x: hidden;
+}
 
 .navbar-logo{
     width: 2.5em;
@@ -198,6 +201,11 @@ thead{
 
 #admin-detail-laporan-bap .btn{
     border: none;
+}
+
+#admin-detail-laporan-bap img{
+    width: 18em;
+    height: 20em;
 }
 /************ end admin-detail-laporan-bap page ******************/
 

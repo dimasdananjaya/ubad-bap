@@ -39,4 +39,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::post('/store-laporan-periode', 'BAPLaporanController@storeLaporanBap')->middleware('auth');
     Route::put('/update-laporan-periode/{id}', 'BAPLaporanController@updateLaporanBap')->middleware('auth');
     Route::post('/delete-laporan-periode/{id}', 'BAPLaporanController@deleteLaporanBap')->middleware('auth');
+    Route::post('/change-password', 'PasswordChangeController@changePassword')->middleware('auth')->name('dosen.change-password');
 });

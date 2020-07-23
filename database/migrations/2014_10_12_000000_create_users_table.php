@@ -42,6 +42,8 @@ class CreateUsersTable extends Migration
             $table->date('tanggal');
             $table->time('jam');
             $table->string('materi');
+            $table->string('jumlah_mahasiswa');
+            $table->string('file');
             $table->rememberToken();
             $table->timestamps();
 

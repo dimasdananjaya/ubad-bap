@@ -10,7 +10,8 @@ use DB;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
-
+use Storage;
+use Image;
 
 class BAPLaporanController extends Controller
 {
@@ -37,13 +38,24 @@ class BAPLaporanController extends Controller
             'jam'=> 'required',
             'sks'=> 'required',
             'materi'=> 'required',
+            'file'=> 'required',
         ]);
 
         if ($validator->fails()) {
             Alert::error('Data BAP Gagal Disimpan!', 'Isi Formulir Dengan Benar');
             return back();
         }
-        else{
+        elseif($request->hasFile('file')){
+            $image = $request->file('file');
+            $image_name = time() . '.' . $image->getClientOriginalExtension(); 
+            $destinationPath = storage_path('app/public/file');
+            Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
+            //$destinationPath = public_path('/resources/file');
+            //$path = $resize_image->storeAs(
+             //   'public/file', $name
+            //);
+            //$file->move($destinationPath, $name);
+
             $bap = BAPModel::create([
                 'id_user' => $request->input('id_user'),
                 'id_periode' => $request->input('id_periode'),
@@ -52,6 +64,8 @@ class BAPLaporanController extends Controller
                 'jam' => $request->input('jam'),
                 'sks' => $request->input('sks'),
                 'materi' => $request->input('materi'),
+                'jumlah_mahasiswa'=>$request->input('jumlah_mahasiswa'),
+                'file' => $image_name,
             ]);
 
             $bap->save();
@@ -73,6 +87,7 @@ class BAPLaporanController extends Controller
             'jam'=> 'required',
             'sks'=> 'required',
             'materi'=> 'required',
+            'jumlah_mahasiswa'=>'required',
         ]);
 
         if ($validator->fails()) {
@@ -80,7 +95,22 @@ class BAPLaporanController extends Controller
             return back();
         }
 
-        else{  
+        elseif($request->hasFile('file')){
+            $delete = $request->input('file_lama'); //cari nama file
+            Storage::delete('public/file/'.$delete); //hapus file
+
+            $image = $request->file('file');
+            $image_name = time() . '.' . $image->getClientOriginalExtension(); 
+            $destinationPath = storage_path('app/public/file');
+            Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
+            //$file = $request->file('file');
+            //$name = time() . '.' . $file->getClientOriginalExtension();
+            //$destinationPath = public_path('/resources/file');
+            //$path = $request->file('file')->storeAs(
+            //    'public/file', $name
+            //);
+            //$file->move($destinationPath, $name);
+
             $bap->id_user=$request->input('id_user');
             $bap->id_periode=$request->input('id_periode');
             $bap->tanggal=$request->input('tanggal');
@@ -88,6 +118,22 @@ class BAPLaporanController extends Controller
             $bap->jam=$request->input('jam');
             $bap->sks=$request->input('sks');
             $bap->materi=$request->input('materi');
+            $bap->jumlah_mahasiswa=$request->input('jumlah_mahasiswa');
+            $bap->file = $image_name;
+            $bap->save();
+            Alert::success('Data BAP Berhasil Disimpan!');
+            return back();
+        }
+        
+        else{
+            $bap->id_user=$request->input('id_user');
+            $bap->id_periode=$request->input('id_periode');
+            $bap->tanggal=$request->input('tanggal');
+            $bap->mata_kuliah=$request->input('mata_kuliah');
+            $bap->jam=$request->input('jam');
+            $bap->sks=$request->input('sks');
+            $bap->materi=$request->input('materi');
+            $bap->jumlah_mahasiswa=$request->input('jumlah_mahasiswa');
             $bap->save();
             Alert::success('Data BAP Berhasil Disimpan!');
             return back();
@@ -97,6 +143,9 @@ class BAPLaporanController extends Controller
     public function deleteLaporanBap(Request $request )
     {
         $id = $request->input('id_bap');
+
+        $delete = $request->input('file'); //cari nama file
+        Storage::delete('public/file/'.$delete); //hapus file
         BAPModel::find($id)->delete();
         alert()->success('Berhasil Dihapus!', '');
         return back();

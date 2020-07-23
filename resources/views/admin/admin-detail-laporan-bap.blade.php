@@ -6,7 +6,7 @@
         <div class="card">
             <p class="card-text"><b>Detail Laporan : {{$name->name}} <br> BAP Periode : {{$periode->periode}}</b></p>
 
-            <table class="table table-sm table-hover table-striped table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
+            <table class="table table-sm table-bordered table-hover text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
                     <th>No.</th>
                     <th>Tanggal</th>
@@ -14,6 +14,8 @@
                     <th>Jam</th>
                     <th>SKS</th>
                     <th>Materi</th>
+                    <th>Jumlah Mahasiswa</th>
+                    <th>Gambar</th>
                 </thead>
                 <tbody>
                     <?php $i = 1 ?>
@@ -24,7 +26,9 @@
                         <td>{{$dlbp->mata_kuliah}}</td>
                         <td>{{$dlbp->jam}}</td>
                         <td>{{$dlbp->sks}}</td>
-                        <td>{{$dlbp->materi}}</td>        
+                        <td>{{$dlbp->materi}}</td>
+                        <td>{{$dlbp->jumlah_mahasiswa}}</td>
+                        <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -40,7 +44,31 @@
     $(document).ready(function() {
         var table = $('#tabel-laporan-bap').DataTable( {
             lengthChange: false,
-            buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+            buttons: [
+            'copy',
+            {
+                extend: 'excel',
+                messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+            },
+            {
+                extend: 'pdf',
+                messageBottom: null
+            },
+            {
+                extend: 'print',
+                messageTop: function () {
+                    printCounter++;
+ 
+                    if ( printCounter === 1 ) {
+                        return 'This is the first time you have printed this document.';
+                    }
+                    else {
+                        return 'You have printed this document '+printCounter+' times';
+                    }
+                },
+                messageBottom: null
+            }
+        ]
         } );
     
         table.buttons().container()

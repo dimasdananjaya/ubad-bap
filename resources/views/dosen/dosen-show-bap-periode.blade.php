@@ -26,7 +26,7 @@
                             </button>
                         </div><!-- modal header-->
                         <div class="modal-body">
-                            {!!Form::open(['action'=>'BAPLaporanController@storeLaporanBap', 'method'=>'POST'])!!}
+                            {!!Form::open(['action'=>'BAPLaporanController@storeLaporanBap', 'method'=>'POST', 'files' => true])!!}
                                 {{Form::label('tanggal','Tanggal :')}}
                                 {{Form::text('tanggal','',['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                 {{Form::label('mata_kuliah','Mata Kuliah :')}}
@@ -37,6 +37,10 @@
                                 {{Form::number('sks','',['class'=>'form-control form-group','placeholder'=>'sks','required'])}}
                                 {{Form::label('materi','Materi :')}}
                                 {{Form::text('materi','',['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
+                                {{Form::label('jumlah_mahasiswa','Jumlah Mahasiswa :')}}
+                                {{Form::number('jumlah_mahasiswa','',['class'=>'form-control form-group','placeholder'=>'Jumlah Mahasiswa','required'])}}
+                                {{Form::label('file','File :')}}
+                                {{Form::file('file',['class'=>'form-control-file form-group'])}}
                                 {{Form::hidden('id_user',Auth::user()->id_user)}}
                                 {{Form::hidden('id_periode',$periode->id_periode)}}
                                 {{Form::submit('Simpan',['class'=>'btn btn-success btn-block'])}}
@@ -49,7 +53,7 @@
                 </div><!--modal dialog-->
             </div><!--modal-->
 
-            <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
+            <table class="table table-sm table-bordered table-hover text-center table-responsive-sm table-responsive-md" id="tabel-laporan-bap">
                 <thead>
                     <th>No.</th>
                     <th>Tanggal</th>
@@ -57,6 +61,8 @@
                     <th>Jam</th>
                     <th>SKS</th>
                     <th>Materi</th>
+                    <th>Jumlah Mahasiswa</th>
+                    <th>Gambar</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -69,17 +75,20 @@
                         <td>{{$dlbp->jam}}</td>
                         <td>{{$dlbp->sks}}</td>
                         <td>{{$dlbp->materi}}</td>
+                        <td>{{$dlbp->jumlah_mahasiswa}}</td>
+                        <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
                         <td>
-                            <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#periode-edit-modal{{$dlbp->id_bap}}">Edit</a>
+                            <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#bap-edit-modal{{$dlbp->id_bap}}">Edit</a>
                         </td>
                         <td>
                             {!!Form::open(['action'=>['BAPLaporanController@deleteLaporanBap', $dlbp->id_bap], 'method'=>'POST','id'=>'form-delete-bap'.$dlbp->id_bap])!!}
                                 {{ Form::hidden('id_bap',$dlbp->id_bap) }}
+                                {{ Form::hidden('file',$dlbp->file) }}
                                 {{Form::submit('Hapus',['class'=>'btn btn-danger'])}}
                             {!!Form::close()!!}
                         </td>          
                         <!-- Modal Edit BAP-->
-                        <div class="modal fade" id="periode-edit-modal{{$dlbp->id_bap}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="bap-edit-modal{{$dlbp->id_bap}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -89,7 +98,8 @@
                                     </button>
                                     </div>
                                     <div class="modal-body">                  
-                                        {!!Form::open(['action'=>['BAPLaporanController@updateLaporanBap', $dlbp->id_bap], 'method'=>'PUT'])!!}
+                                        {!!Form::open(['action'=>['BAPLaporanController@updateLaporanBap', $dlbp->id_bap], 'method'=>'PUT','files' => true])!!}
+                                            {{Form::label('tanggal','Tanggal :')}}
                                             {{Form::text('tanggal',$dlbp->tanggal,['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                             {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                             {{Form::text('mata_kuliah',$dlbp->mata_kuliah,['class'=>'form-control form-group','placeholder'=>'','required'])}}
@@ -99,8 +109,13 @@
                                             {{Form::text('sks',$dlbp->sks,['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
                                             {{Form::label('materi','Materi :')}}
                                             {{Form::text('materi',$dlbp->materi,['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
+                                            {{Form::label('jumlah_mahasiswa','Jumlah Mahasiswa :')}}
+                                            {{Form::number('jumlah_mahasiswa',$dlbp->jumlah_mahasiswa,['class'=>'form-control form-group','placeholder'=>'Jumlah Mahasiswa','required'])}}
+                                            {{Form::label('file','File :')}}
+                                            {{Form::file('file',['class'=>'form-control-file form-group'])}}
                                             {{Form::hidden('id_user',Auth::user()->id_user)}}
                                             {{Form::hidden('id_periode',$periode->id_periode)}}
+                                            {{Form::hidden('file_lama',$dlbp->file)}}
                                             {{Form::hidden('_method','PUT')}}
                                             {{Form::submit('Update',['class'=>'btn btn-success btn-block'])}}
                                         {!!Form::close()!!}
