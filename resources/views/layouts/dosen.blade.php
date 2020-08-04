@@ -105,6 +105,16 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="fdb-block footer-small">
+            <div class="container">
+                <div class="row text-center">
+                <div class="col">
+                    <p><small>© 2020 Created by 'A.A. Gede Dims Dananjaya'</small></p>
+                </div>
+                </div>
+            </div>
+        </footer>
    
     @include('sweetalert::alert')
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])

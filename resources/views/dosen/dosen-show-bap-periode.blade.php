@@ -28,7 +28,7 @@
                         <div class="modal-body">
                             {!!Form::open(['action'=>'BAPLaporanController@storeLaporanBap', 'method'=>'POST', 'files' => true])!!}
                                 {{Form::label('tanggal','Tanggal :')}}
-                                {{Form::text('tanggal','',['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
+                                {{Form::date('tanggal','',['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                 {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                 {{Form::text('mata_kuliah','',['class'=>'form-control form-group','placeholder'=>'','required'])}}
                                 {{Form::label('jam','Jam :')}}

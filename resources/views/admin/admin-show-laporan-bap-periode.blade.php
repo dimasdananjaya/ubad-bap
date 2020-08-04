@@ -2,7 +2,7 @@
 
 @section('content')
 <section id="admin-show-laporan-bap-periode">
-    <div class="container">
+    <div class="container-fluid">
         <div class="card">
             <h2 class="text-center">Data BAP Periode : {{$periode->periode}}</h2>
             <img class="mx-auto d-block" src="{{asset('resources/logo/admin-home-bap.svg')}}">
@@ -33,9 +33,20 @@
                 </tbody>
             </table>
             <p><a class="btn btn-primary mb-5 mb-md-0 mt-4" href="{{route('admin.pilih.periode.laporan')}}">Kembali ke Pilih Periode</a></p>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <canvas id="canvas" height="280" width="600"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div><!--card-->
     </div><!--container-->
 </section>
+
 <script>
     $(document).ready(function() {
         var table = $('#tabel-laporan-bap').DataTable( {
@@ -52,5 +63,46 @@
             } );
         } ).draw();
     } );
+
+    var nama = [@foreach($dataLaporanBAPUser as $name) '{{$name->name}}', @endforeach];
+    var sks = [@foreach($dataLaporanBAPUser as $sks) {{$sks->total_sks}}, @endforeach];
+
+
+    var barChartData = {
+        labels: nama,
+        datasets: [{
+            backgroundColor: "rgba(220,220,220,0.5)",
+            data: nama,
+        }, {
+            label: 'sks',
+            backgroundColor: "rgba(151,187,205,0.5)",
+            data: sks
+        }]
+    };
+
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: 'rgb(0, 255, 0)',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Chart SKS Mengajar'
+                }
+            }
+        });
+
+    };
 </script>
+
 @endsection

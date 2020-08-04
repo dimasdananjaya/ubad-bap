@@ -45,6 +45,9 @@
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css" rel="stylesheet">
 
+    <!--chartjs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 </head>
 
 <body>
@@ -105,6 +108,16 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="fdb-block footer-small">
+            <div class="container">
+                <div class="row text-center">
+                <div class="col">
+                    <p><small>© 2020 Created by 'A.A. Gede Dims Dananjaya'</small></p>
+                </div>
+                </div>
+            </div>
+        </footer>
    
     @include('sweetalert::alert')
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
@@ -124,6 +137,7 @@
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js" defer></script> 
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js" defer></script> 
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js" defer></script>     
+
 
 </body>
 </html>
