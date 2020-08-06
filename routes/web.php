@@ -41,3 +41,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::post('/delete-laporan-periode/{id}', 'BAPLaporanController@deleteLaporanBap')->middleware('auth');
     Route::post('/change-password', 'PasswordChangeController@changePassword')->middleware('auth')->name('dosen.change-password');
 });
+
+Route::get('/pimpinan-pilih-periode-laporan', 'PimpinanController@pimpinanPilihPeriodeLaporan')->name('pimpinan.pilih.periode.laporan');
+Route::get('/pimpinan-show-laporan', 'PimpinanController@showBAPPeriodePimpinan')->name('pimpinan.show.laporan.periode');
+Route::get('/pimpinan-laporan-bap/{id}', 'PimpinanController@detailLaporanBAPPimpinan')->name('pimpinan.detail.laporan.bap');
