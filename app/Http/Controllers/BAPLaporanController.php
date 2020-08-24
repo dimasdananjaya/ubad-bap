@@ -12,6 +12,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use Storage;
 use Image;
+use File;
+
 
 class BAPLaporanController extends Controller
 {
@@ -41,15 +43,28 @@ class BAPLaporanController extends Controller
             'file'=> 'required',
         ]);
 
+
         if ($validator->fails()) {
             Alert::error('Data BAP Gagal Disimpan!', 'Isi Formulir Dengan Benar');
             return back();
         }
         elseif($request->hasFile('file')){
             $image = $request->file('file');
-            $image_name = time() . '.' . $image->getClientOriginalExtension(); 
-            $destinationPath = storage_path('app/public/file');
-            Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $id_periode=$request->input('id_periode');
+            $id_user=$request->input('id_user');
+
+            $destinationPath = storage_path('app/public/file/'.$id_periode.'/'.$id_user);
+
+            if(!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath);
+                Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
+            }
+
+            else{
+                Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
+            }
+
             //$destinationPath = public_path('/resources/file');
             //$path = $resize_image->storeAs(
              //   'public/file', $name
@@ -97,11 +112,14 @@ class BAPLaporanController extends Controller
 
         elseif($request->hasFile('file')){
             $delete = $request->input('file_lama'); //cari nama file
-            Storage::delete('public/file/'.$delete); //hapus file
+            $id_periode=$request->input('id_periode');
+            $id_user=$request->input('id_user');
+
+            Storage::delete('public/file/'.$id_periode.'/'.$id_user.'/'.$delete); //hapus file
 
             $image = $request->file('file');
             $image_name = time() . '.' . $image->getClientOriginalExtension(); 
-            $destinationPath = storage_path('app/public/file');
+            $destinationPath = storage_path('app/public/file/'.$id_periode.'/'.$id_user);
             Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
             //$file = $request->file('file');
             //$name = time() . '.' . $file->getClientOriginalExtension();
@@ -140,13 +158,17 @@ class BAPLaporanController extends Controller
         }
     }
 
-    public function deleteLaporanBap(Request $request )
+    public function deleteLaporanBap(Request $request)
     {
         $id = $request->input('id_bap');
+        $id_periode=$request->input('id_periode');
+        $id_user=$request->input('id_user');
+        $delete = $request->input('file_bap'); //cari nama file
 
-        $delete = $request->input('file'); //cari nama file
-        Storage::delete('public/file/'.$delete); //hapus file
+        Storage::delete('public/file/'.$id_periode.'/'.$id_user.'/'.$delete); //hapus file
+
         BAPModel::find($id)->delete();
+
         alert()->success('Berhasil Dihapus!', '');
         return back();
     }

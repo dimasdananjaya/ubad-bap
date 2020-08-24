@@ -28,7 +28,7 @@
                         <td>{{$dlbp->sks}}</td>
                         <td>{{$dlbp->materi}}</td>
                         <td>{{$dlbp->jumlah_mahasiswa}}</td>
-                        <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
+                        <td><img src="{{ asset('storage/file/'.$periode->id_periode.'/'.$dlbp->id_user.'/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
                     </tr>
                     @endforeach
                 </tbody>

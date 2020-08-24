@@ -76,14 +76,16 @@
                         <td>{{$dlbp->sks}}</td>
                         <td>{{$dlbp->materi}}</td>
                         <td>{{$dlbp->jumlah_mahasiswa}}</td>
-                        <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
+                        <td><img src="{{ asset('storage/file/'.$periode->id_periode.'/'.Auth::user()->id_user.'/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#bap-edit-modal{{$dlbp->id_bap}}">Edit</a>
                         </td>
                         <td>
-                            {!!Form::open(['action'=>['BAPLaporanController@deleteLaporanBap', $dlbp->id_bap], 'method'=>'POST','id'=>'form-delete-bap'.$dlbp->id_bap])!!}
-                                {{ Form::hidden('id_bap',$dlbp->id_bap) }}
-                                {{ Form::hidden('file',$dlbp->file) }}
+                            {!!Form::open(['action'=>['BAPLaporanController@deleteLaporanBap', $dlbp->id_bap], 'files' => true, 'method'=>'POST','id'=>'form-delete-bap'.$dlbp->id_bap])!!}
+                                {{Form::hidden('id_bap',$dlbp->id_bap) }}
+                                {{Form::hidden('id_user',Auth::user()->id_user)}}
+                                {{Form::hidden('id_periode',$periode->id_periode)}}
+                                {{Form::hidden('file_bap',$dlbp->file) }}
                                 {{Form::submit('Hapus',['class'=>'btn btn-danger'])}}
                             {!!Form::close()!!}
                         </td>          
