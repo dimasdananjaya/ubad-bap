@@ -111,7 +111,7 @@
             <div class="container">
               <div class="row text-center">
                 <div class="col">
-                    <p><small>© 2020 Created by 'A.A. Gede Dims Dananjaya'</small></p>
+                    <p><small>© 2021 Created by 'A.A. Gede Dims Dananjaya'</small></p>
                 </div>
               </div>
             </div>
