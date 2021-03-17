@@ -39,7 +39,8 @@
                                 {{Form::text('materi','',['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
                                 {{Form::label('jumlah_mahasiswa','Jumlah Mahasiswa :')}}
                                 {{Form::number('jumlah_mahasiswa','',['class'=>'form-control form-group','placeholder'=>'Jumlah Mahasiswa','required'])}}
-                                {{Form::label('file','File :')}}
+                                {{Form::label('file','Bukti Mengajar :')}}
+                                <small>*dapat berupa foto/screenshot</small>
                                 {{Form::file('file',['class'=>'form-control-file form-group'])}}
                                 {{Form::hidden('id_user',Auth::user()->id_user)}}
                                 {{Form::hidden('id_periode',$periode->id_periode)}}
@@ -113,7 +114,8 @@
                                             {{Form::text('materi',$dlbp->materi,['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
                                             {{Form::label('jumlah_mahasiswa','Jumlah Mahasiswa :')}}
                                             {{Form::number('jumlah_mahasiswa',$dlbp->jumlah_mahasiswa,['class'=>'form-control form-group','placeholder'=>'Jumlah Mahasiswa','required'])}}
-                                            {{Form::label('file','File :')}}
+                                            {{Form::label('file','Bukti Mengajar :')}}
+                                            <small>*dapat berupa foto/screenshot</small>
                                             {{Form::file('file',['class'=>'form-control-file form-group'])}}
                                             {{Form::hidden('id_user',Auth::user()->id_user)}}
                                             {{Form::hidden('id_periode',$periode->id_periode)}}
