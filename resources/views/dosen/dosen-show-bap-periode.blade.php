@@ -77,7 +77,7 @@
                         <td>{{$dlbp->sks}}</td>
                         <td>{{$dlbp->materi}}</td>
                         <td>{{$dlbp->jumlah_mahasiswa}}</td>
-                        <td><img src="{{ asset('storage/file/'.$periode->id_periode.'/'.Auth::user()->id_user.'/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
+                        <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#bap-edit-modal{{$dlbp->id_bap}}">Edit</a>
                         </td>

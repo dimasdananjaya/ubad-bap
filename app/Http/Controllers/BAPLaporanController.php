@@ -54,7 +54,7 @@ class BAPLaporanController extends Controller
             $id_periode=$request->input('id_periode');
             $id_user=$request->input('id_user');
 
-            $destinationPath = storage_path('app/public/file/'.$id_periode.'/'.$id_user);
+            $destinationPath = storage_path('app/public/file/');
 
             if(!File::exists($destinationPath)) {
                 File::makeDirectory($destinationPath);
@@ -115,11 +115,11 @@ class BAPLaporanController extends Controller
             $id_periode=$request->input('id_periode');
             $id_user=$request->input('id_user');
 
-            Storage::delete('public/file/'.$id_periode.'/'.$id_user.'/'.$delete); //hapus file
+            Storage::delete('public/file/'.$delete); //hapus file
 
             $image = $request->file('file');
             $image_name = time() . '.' . $image->getClientOriginalExtension(); 
-            $destinationPath = storage_path('app/public/file/'.$id_periode.'/'.$id_user);
+            $destinationPath = storage_path('app/public/file/');
             Image::make($image->getRealPath())->resize(320,440)->save($destinationPath . '/' . $image_name);
             //$file = $request->file('file');
             //$name = time() . '.' . $file->getClientOriginalExtension();
@@ -197,6 +197,7 @@ class BAPLaporanController extends Controller
         ->join('users', 'users.id_user', '=', 'bap.id_user')
         ->select('bap.*', 'users.name')
         ->where('id_periode',$id_periode)
+        ->where('bap.id_user',$id_user)
         ->get();
         
         return view('admin.admin-detail-laporan-bap')
