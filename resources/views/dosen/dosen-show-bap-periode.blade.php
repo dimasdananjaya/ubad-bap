@@ -21,6 +21,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Tambah Laporan BAP</h5>
+                            <small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -40,7 +41,7 @@
                                 {{Form::label('jumlah_mahasiswa','Jumlah Mahasiswa :')}}
                                 {{Form::number('jumlah_mahasiswa','',['class'=>'form-control form-group','placeholder'=>'Jumlah Mahasiswa','required'])}}
                                 {{Form::label('file','Bukti Mengajar :')}}
-                                <small>*dapat berupa foto/screenshot</small>
+                                <small>*file yang diupload berupa bukti pertemuan (screenshot,foto,dll)</small>
                                 {{Form::file('file',['class'=>'form-control-file form-group'])}}
                                 {{Form::hidden('id_user',Auth::user()->id_user)}}
                                 {{Form::hidden('id_periode',$periode->id_periode)}}
