@@ -14,6 +14,9 @@
             <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
                 Tambah Laporan BAP
             </button>
+            <div>
+                <p><small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small></p>
+            </div>
             
             <!-- Modal -->
             <div class="modal fade" id="tambahLaporanBapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -21,7 +24,6 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Tambah Laporan BAP</h5>
-                            <small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -140,6 +142,7 @@
     </div><!--container-->
 </section>
 <script>
+    /***
     $(document).ready(function() {
         var table = $('#tabel-laporan-bap').DataTable( {
             lengthChange: false,
@@ -151,6 +154,24 @@
 
         table.on( 'order.dt search.dt', function () {
             table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
+    } );
+    **/
+
+    $(document).ready(function() {
+        var t = $('#tabel-laporan-bap').DataTable( {
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ],
+            "order": [[ 1, 'asc' ]]
+        } );
+    
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
                 cell.innerHTML = i+1;
             } );
         } ).draw();
