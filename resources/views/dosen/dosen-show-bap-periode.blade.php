@@ -11,9 +11,13 @@
             <h4><b>Total SKS : @foreach ($totalSKS as $tsks) {{$tsks->totalSKS}}@endforeach</b></h4>
 
             <!-- Button trigger modal -->
+            @if($periode->status=='aktif')
             <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
                 Tambah Laporan BAP
             </button>
+            @else
+            <button>Periode Laporan Berakhir</button>
+            @endif
             <div>
                 <p><small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small></p>
             </div>
@@ -35,7 +39,7 @@
                                 {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                 {{Form::text('mata_kuliah','',['class'=>'form-control form-group','placeholder'=>'','required'])}}
                                 {{Form::label('jam','Jam :')}}
-                                {{Form::text('jam','',['class'=>'form-control form-group','placeholder'=>'Jam','required'])}}
+                                {{Form::time('jam','',['class'=>'form-control form-group','placeholder'=>'Jam','required'])}}
                                 {{Form::label('sks','SKS :')}}
                                 {{Form::number('sks','',['class'=>'form-control form-group','placeholder'=>'sks','required'])}}
                                 {{Form::label('materi','Materi :')}}
@@ -67,8 +71,13 @@
                     <th>Materi</th>
                     <th>Jumlah Mahasiswa</th>
                     <th>Gambar</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    @if($periode->status=='aktif')
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    @else
+                        <th>-</th>
+                        <th>-</th>
+                    @endif
                 </thead>
                 <tbody>
                     @foreach ($dataLaporanBAPPeriode as $dlbp)
@@ -81,6 +90,7 @@
                         <td>{{$dlbp->materi}}</td>
                         <td>{{$dlbp->jumlah_mahasiswa}}</td>
                         <td><img src="{{ asset('storage/file/'.$dlbp->file) }}" alt="{{$dlbp->file}}"></td>
+                        @if($periode->status=='aktif')
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#bap-edit-modal{{$dlbp->id_bap}}">Edit</a>
                         </td>
@@ -92,7 +102,11 @@
                                 {{Form::hidden('file_bap',$dlbp->file) }}
                                 {{Form::submit('Hapus',['class'=>'btn btn-danger'])}}
                             {!!Form::close()!!}
-                        </td>          
+                        </td>
+                        @else
+                            <td>-</td>
+                            <td>-</td>
+                        @endif          
                         <!-- Modal Edit BAP-->
                         <div class="modal fade" id="bap-edit-modal{{$dlbp->id_bap}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -110,7 +124,7 @@
                                             {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                             {{Form::text('mata_kuliah',$dlbp->mata_kuliah,['class'=>'form-control form-group','placeholder'=>'','required'])}}
                                             {{Form::label('jam','Jam :')}}
-                                            {{Form::text('jam',$dlbp->jam,['class'=>'form-control form-group','placeholder'=>'Jam','required'])}}
+                                            {{Form::time('jam',$dlbp->jam,['class'=>'form-control form-group','placeholder'=>'Jam','required'])}}
                                             {{Form::label('sks','SKS :')}}
                                             {{Form::text('sks',$dlbp->sks,['class'=>'form-control form-group','placeholder'=>'Materi','required'])}}
                                             {{Form::label('materi','Materi :')}}
