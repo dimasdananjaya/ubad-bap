@@ -118,11 +118,6 @@ class PeriodeController extends Controller
         }
 
         else{
-            DB::select(DB::raw(" 
-            UPDATE periode
-            SET status='non-aktif'
-            WHERE id_periode != $simpan->id_periode "
-            ));
             $simpan->save();
             Alert::success('Periode Berhasil Disimpan!', 'Kembali');
             return back();
