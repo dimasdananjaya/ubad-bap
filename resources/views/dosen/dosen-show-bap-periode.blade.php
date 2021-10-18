@@ -120,7 +120,7 @@
                                     <div class="modal-body">                  
                                         {!!Form::open(['action'=>['BAPLaporanController@updateLaporanBap', $dlbp->id_bap], 'method'=>'PUT','files' => true])!!}
                                             {{Form::label('tanggal','Tanggal :')}}
-                                            {{Form::date('tanggal',$dlbp->tangga;,['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
+                                            {{Form::date('tanggal',$dlbp->tanggal,['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                             {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                             {{Form::text('mata_kuliah',$dlbp->mata_kuliah,['class'=>'form-control form-group','placeholder'=>'','required'])}}
                                             {{Form::label('jam','Jam :')}}

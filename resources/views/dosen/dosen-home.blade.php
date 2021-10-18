@@ -10,17 +10,17 @@
             <div class="row">
                 <div class="col-lg-6 text-center">
                     <img class="d-block mx-auto" src="{{asset('resources/logo/admin-home-bap.svg')}}">
-                    <h4>Laporkan BAP</h4>
-                    <p>Laporkan Berita Acara Perkuliahan</p>
-                    <p><a class="btn btn-primary mb-5 mb-md-0" href="{{route('dosen.pilih.periode.laporan')}}">Pilih</a></p>
+                    <h4 class="text-center">Laporkan BAP</h4>
+                    <p class="text-center">Laporkan Berita Acara Perkuliahan</p>
+                    <p><a class="btn btn-primary d-block mx-auto btn-block" href="{{route('dosen.pilih.periode.laporan')}}">Pilih</a></p>
                 </div><!--col-->
 
                 <div class="col-lg-6 text-center">
                     <img class="d-block mx-auto" src="{{asset('resources/logo/login-page.svg')}}">
-                    <h4>Ganti Password</h4>
-                    <p>Ganti Password Login</p>
+                    <h4 class="text-center">Ganti Password</h4>
+                    <p class="text-center">Ganti Password Login</p>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gantiPasswordModal">
+                <button type="button" class="btn btn-success d-block mx-auto btn-block" data-toggle="modal" data-target="#gantiPasswordModal">
                     Pilih
                 </button>
                 
