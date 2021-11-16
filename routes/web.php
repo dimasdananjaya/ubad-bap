@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dosen'], function () {
     Route::put('/update-laporan-periode/{id}', 'BAPLaporanController@updateLaporanBap')->middleware('auth');
     Route::post('/delete-laporan-periode/{id}', 'BAPLaporanController@deleteLaporanBap')->middleware('auth');
     Route::post('/change-password', 'PasswordChangeController@changePassword')->middleware('auth')->name('dosen.change-password');
+    Route::get('/get-mata-kuliah','BAPLaporanController@getAutocompleteMataKuliah'); 
 });
 
 Route::get('/pimpinan-pilih-periode-laporan', 'PimpinanController@pimpinanPilihPeriodeLaporan')->name('pimpinan.pilih.periode.laporan');

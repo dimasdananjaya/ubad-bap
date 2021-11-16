@@ -190,5 +190,6 @@
             } );
         } ).draw();
     } );
+
 </script>
 @endsection

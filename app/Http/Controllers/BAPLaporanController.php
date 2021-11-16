@@ -13,6 +13,7 @@ use App\User;
 use Storage;
 use Image;
 use File;
+use App\MataKuliah;
 
 
 class BAPLaporanController extends Controller
@@ -172,6 +173,13 @@ class BAPLaporanController extends Controller
         alert()->success('Berhasil Dihapus!', '');
         return back();
     }
+
+     function getAutocompleteMataKuliah(Request $request){
+            if($request->has('term')){
+                return MataKuliah::where('nama_mk','like','%'.$request->input('term').'%')->get();
+            }
+    }
+    
 
     public function showBAPPeriodeAdmin(Request $request){
         $id_periode=$request->input('id_periode');
