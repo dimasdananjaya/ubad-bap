@@ -55,6 +55,8 @@ class PeriodeController extends Controller
         $validator = Validator::make($request->all(), [
             'periode' => 'required|unique:periode|max:255',
             'status'=> 'required',
+            'start_date'=>'required',
+            'end_date'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -64,6 +66,8 @@ class PeriodeController extends Controller
         else{
             $periode = PeriodeModel::create([
                 'periode' => $request->input('periode'),
+                'start_date'=> $request->input('start_date'),
+                'end_date'=>$request->input('end_date'),
                 'status' => 'aktif',
             ]);
 
@@ -106,6 +110,8 @@ class PeriodeController extends Controller
     {
         $simpan=PeriodeModel::find($id);
         $simpan->periode=$request->input('periode');
+        $simpan->start_date=$request->input('start_date');
+        $simpan->end_date=$request->input('end_date');
         $simpan->status=$request->input('status');   
         
         $validator = Validator::make($request->all(), [

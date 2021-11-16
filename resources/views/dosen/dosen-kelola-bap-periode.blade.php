@@ -7,19 +7,21 @@
             <h2 class="text-center"><b>Kelola Data BAP Periode : {{$periode->periode}}</b></h2>
             <img class="img-fluid d-block mx-auto" src="{{asset('resources/logo/laporan-bap-dosen.svg')}}">
             <hr>
-
-            <h4><b>Total SKS : @foreach ($totalSKS as $tsks) {{$tsks->totalSKS}}@endforeach</b></h4>
-
-            <!-- Button trigger modal -->
-            @if($periode->status=='aktif')
-            <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
-                Tambah Laporan BAP
-            </button>
-            @else
-            <button>Periode Laporan Berakhir</button>
-            @endif
+            
             <div>
-                <p><small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small></p>
+                <div class="card pt-2 pl-2 pr-2 pb-2 mt-2 mb-3 pb-2" style="width: 20em">
+                    <h4><b>Total SKS : @foreach ($totalSKS as $tsks) {{$tsks->totalSKS}}@endforeach</b></h4>
+                    <!-- Button trigger modal -->
+                    @if($periode->status=='aktif')
+                    <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#tambahLaporanBapModal">
+                        Tambah Laporan BAP
+                    </button>
+                    @else
+                    <button>Periode Laporan Berakhir</button>
+                    @endif
+                    <p>Batas Waktu Pelaporan <b>{{$periode->end_date}}</b></p>
+                    <p><small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small></p>
+                </div><!--card-->
             </div>
             
             <!-- Modal -->

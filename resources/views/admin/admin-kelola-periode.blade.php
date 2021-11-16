@@ -21,6 +21,10 @@
                             {!!Form::open(['action'=>'PeriodeController@store', 'method'=>'POST'])!!}
                                 {{Form::label('periode','Periode :')}}
                                 {{Form::text('periode','',['class'=>'form-control form-group','placeholder'=>'Periode','required'])}}
+                                {{Form::label('start_date','Start Date :')}}
+                                {{Form::date('start_date','',['class'=>'form-control form-group','placeholder'=>'Start Date','required'])}}
+                                {{Form::label('end_date','End Date :')}}
+                                {{Form::date('end_date','',['class'=>'form-control form-group','placeholder'=>'End Date','required'])}}
                                 {{Form::hidden('status','aktif')}}
                                 {{Form::submit('Simpan',['class'=>'btn btn-success btn-block'])}}
                             {!!Form::close()!!}
@@ -41,6 +45,8 @@
             <table class="table table-sm table-hover table-striped text-center table-responsive-sm table-responsive-md" id="tabel-periode">
                 <thead>
                     <th>Periode</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </thead>
@@ -48,6 +54,8 @@
                     @foreach ($dataPeriode as $dtprd)
                     <tr>
                         <td>{{$dtprd->periode}}</td>
+                        <td>{{$dtprd->start_date}}</td>
+                        <td>{{$dtprd->end_date}}</td>
                         <td>{{$dtprd->status}}</td>
                         <td>
                             <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#periode-edit-modal{{$dtprd->id_periode}}">Edit</a>
@@ -66,6 +74,10 @@
                                         {!!Form::open(['action'=>['PeriodeController@update', $dtprd->id_periode], 'method'=>'PUT'])!!}
                                             {{Form::label('periode','Periode :')}}
                                             {{Form::text('periode',$dtprd->periode,['class'=>'form-control form-group','placeholder'=>'Periode'])}}
+                                            {{Form::label('start_date','Start Date :')}}
+                                            {{Form::date('start_date',$dtprd->start_date,['class'=>'form-control form-group','placeholder'=>'Start Date'])}}
+                                            {{Form::label('periode','Periode :')}}
+                                            {{Form::date('end_date',$dtprd->end_date,['class'=>'form-control form-group','placeholder'=>'End Date'])}}
                                             {{Form::label('periode','Periode :')}}
                                             <select name="status" class="form-group form-control">
                                                 <option value="aktif" class="form-group form-control">Aktif</option>

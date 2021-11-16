@@ -26,7 +26,7 @@ class BAPLaporanController extends Controller
         $dataLaporanBAPPeriode=DB::select(DB::raw("SELECT*FROM bap where id_periode=$id_periode AND id_user=$id_user"));
         $totalSKS=DB::select(DB::raw("SELECT SUM(sks) AS totalSKS FROM bap where id_user=$id_user AND id_periode=$id_periode"));
 
-        return view('dosen.dosen-show-bap-periode')
+        return view('dosen.dosen-kelola-bap-periode')
         ->with('dataLaporanBAPPeriode',$dataLaporanBAPPeriode)
         ->with('periode',$periode)
         ->with('totalSKS',$totalSKS);

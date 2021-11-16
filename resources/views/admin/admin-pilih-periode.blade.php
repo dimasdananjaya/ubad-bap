@@ -9,6 +9,8 @@
             <table class="table table-sm table-hover table-striped" id="tabel-periode">
                 <thead>
                     <th>Periode</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </thead>
@@ -16,6 +18,8 @@
                     @foreach ($dataPeriode as $dtprd)
                     <tr>
                         <td>{{$dtprd->periode}}</td>
+                        <td>{{$dtprd->start_date}}</td>
+                        <td>{{$dtprd->end_date}}</td>
                         <td>{{$dtprd->status}}</td>
                         <td>
                             {!!Form::open(['action'=>['BAPLaporanController@showBAPPeriodeAdmin', $dtprd->id_periode], 'method'=>'GET'])!!}
