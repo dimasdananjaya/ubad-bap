@@ -36,6 +36,8 @@
                         </div><!-- modal header-->
                         <div class="modal-body">
                             {!!Form::open(['action'=>'BAPLaporanController@storeLaporanBap', 'method'=>'POST', 'files' => true])!!}
+                                {{Form::label('end_date','Tanggal Akhir Pelaporan :')}}
+                                {{Form::date('end_date',$periode->end_date,['class'=>'form-control form-group','required','readonly'])}}
                                 {{Form::label('tanggal','Tanggal :')}}
                                 {{Form::date('tanggal','',['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                 {{Form::label('mata_kuliah','Mata Kuliah :')}}

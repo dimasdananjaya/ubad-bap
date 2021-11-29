@@ -36,25 +36,27 @@ class BAPLaporanController extends Controller
         $validator = Validator::make($request->all(), [
             'id_user'=> 'required',
             'id_periode'=> 'required',
-            'tanggal' => 'required',
+            //'tanggal' => 'required',
             'mata_kuliah'=> 'required',
             'jam'=> 'required',
             'sks'=> 'required',
             'materi'=> 'required',
             'file'=> 'required',
+            'end_date'    => 'required|date',
+            'tanggal'      => 'required|date|before_or_equal:end_date'
         ]);
 
 
         if ($validator->fails()) {
-            Alert::error('Data BAP Gagal Disimpan!', 'Isi Formulir Dengan Benar');
+            Alert::error('Data BAP Gagal Disimpan!', 'Isi Formulir Dengan Benar / Perhatikan tanggal periode pelaporan');
             return back();
         }
+
         elseif($request->hasFile('file')){
             $image = $request->file('file');
             $image_name = time() . '.' . $image->getClientOriginalExtension();
             $id_periode=$request->input('id_periode');
             $id_user=$request->input('id_user');
-
             $destinationPath = storage_path('app/public/file/');
 
             if(!File::exists($destinationPath)) {
@@ -98,16 +100,18 @@ class BAPLaporanController extends Controller
         $validator = Validator::make($request->all(), [
             'id_user'=> 'required',
             'id_periode'=> 'required',
-            'tanggal' => 'required',
+            //'tanggal' => 'required',
             'mata_kuliah'=> 'required',
             'jam'=> 'required',
             'sks'=> 'required',
             'materi'=> 'required',
             'jumlah_mahasiswa'=>'required',
+            'end_date'    => 'required|date',
+            'tanggal'      => 'required|date|before_or_equal:end_date'
         ]);
 
         if ($validator->fails()) {
-            Alert::error('Data BAP Gagal Disimpan!', 'Kembali');
+            Alert::error('Data BAP Gagal Disimpan!', 'Isi Formulir Dengan Benar / Perhatikan tanggal periode pelaporan');
             return back();
         }
 
@@ -166,7 +170,7 @@ class BAPLaporanController extends Controller
         $id_user=$request->input('id_user');
         $delete = $request->input('file_bap'); //cari nama file
 
-        Storage::delete('public/file/'.$id_periode.'/'.$id_user.'/'.$delete); //hapus file
+        Storage::delete('public/file/'.$delete); //hapus file
 
         BAPModel::find($id)->delete();
 
