@@ -43,7 +43,8 @@ class BAPLaporanController extends Controller
             'materi'=> 'required',
             'file'=> 'required',
             'end_date'    => 'required|date',
-            'tanggal'      => 'required|date|before_or_equal:end_date'
+            'start_date' => 'required|date',
+            'tanggal'      => 'required|date|after_or_equal:start_date'
         ]);
 
 
@@ -107,7 +108,8 @@ class BAPLaporanController extends Controller
             'materi'=> 'required',
             'jumlah_mahasiswa'=>'required',
             'end_date'    => 'required|date',
-            'tanggal'      => 'required|date|before_or_equal:end_date'
+            'start_date' => 'required|date',
+            'tanggal'      => 'required|date|after_or_equal:start_date'
         ]);
 
         if ($validator->fails()) {

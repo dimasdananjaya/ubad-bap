@@ -36,9 +36,17 @@
                         </div><!-- modal header-->
                         <div class="modal-body">
                             {!!Form::open(['action'=>'BAPLaporanController@storeLaporanBap', 'method'=>'POST', 'files' => true])!!}
-                                {{Form::label('end_date','Tanggal Akhir Pelaporan :')}}
-                                {{Form::date('end_date',$periode->end_date,['class'=>'form-control form-group','required','readonly'])}}
-                                {{Form::label('tanggal','Tanggal :')}}
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-6 col-sm-6">
+                                        {{Form::label('start_date','Tanggal Awal Pelaporan :')}}
+                                        {{Form::date('start_date',$periode->start_date,['class'=>'form-control form-group','required','readonly'])}}
+                                    </div>
+                                    <div class="col-lg-6 col-xs-6 col-sm-6">
+                                        {{Form::label('end_date','Tanggal Akhir Pelaporan :')}}
+                                        {{Form::date('end_date',$periode->end_date,['class'=>'form-control form-group','required','readonly'])}}
+                                    </div>
+                                </div>
+                                {{Form::label('tanggal','Tanggal Lapor BAP:')}}
                                 {{Form::date('tanggal','',['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                 {{Form::label('mata_kuliah','Mata Kuliah :')}}
                                 {{Form::text('mata_kuliah','',['class'=>'form-control form-group','placeholder'=>'','required'])}}
@@ -123,6 +131,16 @@
                                     </div>
                                     <div class="modal-body">                  
                                         {!!Form::open(['action'=>['BAPLaporanController@updateLaporanBap', $dlbp->id_bap], 'method'=>'PUT','files' => true])!!}
+                                            <div class="row">
+                                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                                    {{Form::label('start_date','Tanggal Awal Pelaporan :')}}
+                                                    {{Form::date('start_date',$periode->start_date,['class'=>'form-control form-group','required','readonly'])}}
+                                                </div>
+                                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                                    {{Form::label('end_date','Tanggal Akhir Pelaporan :')}}
+                                                    {{Form::date('end_date',$periode->end_date,['class'=>'form-control form-group','required','readonly'])}}
+                                                </div>
+                                            </div>
                                             {{Form::label('tanggal','Tanggal :')}}
                                             {{Form::date('tanggal',$dlbp->tanggal,['class'=>'form-control form-group','placeholder'=>'dd/mm/yyyy','required'])}}
                                             {{Form::label('mata_kuliah','Mata Kuliah :')}}
