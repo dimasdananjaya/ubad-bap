@@ -7,7 +7,7 @@
             <h2 class="text-center"><b>Pilih Periode</b></h2>
             <img class="img-fluid d-block mx-auto" src="{{asset('resources/logo/dosen-pilih-periode.svg')}}">
             <hr>
-            <table class="table table-sm table-hover table-striped" id="tabel-periode">
+            <table class="table table-responsive-sm table-sm table-hover table-striped" id="tabel-periode">
                 <thead>
                     <th>Periode</th>
                     <th>Start Date</th>

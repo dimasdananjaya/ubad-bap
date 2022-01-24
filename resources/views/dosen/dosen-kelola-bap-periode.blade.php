@@ -20,7 +20,7 @@
                     <button>Periode Laporan Berakhir</button>
                     @endif
                     <p>Batas Waktu Pelaporan <b>{{$periode->end_date}}</b></p>
-                    <p><small>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</small></p>
+                    <p>*Laporan BAP dibuat setiap pertemuan perkuliahan dilaksanakan</p>
                 </div><!--card-->
             </div>
             

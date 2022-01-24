@@ -6,8 +6,8 @@
       <div class="card">
         <div class="row">
           <div class="col text-center">
-            <h3>Pelaporan BAP Online</h3>
-            <p>Laporkan Berita Acara Perkuliahan Secara Online</p>
+            <h3><b>Pelaporan BAP Online</b></h3>
+            <p><b>Bali Dwipa University</b></p>
           </div><!--end col-->
         </div><!--end row-->
 
@@ -17,9 +17,7 @@
 
         <div class="row">
           <div class="col-lg-12 mt-3">
-            <div class="d-flex justify-content-center">
-              <a class="mx-2 btn btn-success btn-round btn-md" href="{{ route('login') }}">Login</a>
-            </div>
+            <a class="mx-2 btn btn-success btn-round btn-block" href="{{ route('login') }}">Login</a>
           </div><!--end col-->
         </div><!--end row-->
       </div><!--end card-->
