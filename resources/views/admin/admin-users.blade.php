@@ -110,7 +110,6 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Level</th>
                     <th>Edit</th>
                 </thead>
                 <tbody>
@@ -119,7 +118,6 @@
                             <td>{{$dtu->id_user}}</td>
                             <td>{{$dtu->name}}</td>
                             <td>{{$dtu->email}}</td>
-                            <td>{{$dtu->pwd}}</td>
                             <td>{{$dtu->level}}</td>
                             <td>
                                 <a class="btn btn-success" style="color:#fff;float:center;" data-toggle="modal" data-target="#user-edit-modal{{$dtu->id_user}}">Edit</a>

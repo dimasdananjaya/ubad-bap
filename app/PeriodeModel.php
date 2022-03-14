@@ -11,6 +11,8 @@ class PeriodeModel extends Model
     protected $table='periode';
     protected $fillable=[
         'periode',
+        'start_date',
+        'end_date',
         'status'
     ];
 }

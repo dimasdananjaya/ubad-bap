@@ -68,7 +68,7 @@ class PeriodeController extends Controller
                 'periode' => $request->input('periode'),
                 'start_date'=> $request->input('start_date'),
                 'end_date'=>$request->input('end_date'),
-                'status' => 'aktif',
+                'status' => 'aktif'
             ]);
 
             $periode->save();
